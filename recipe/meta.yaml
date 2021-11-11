@@ -1,5 +1,5 @@
 {% set name = "pymediainfo" %}
-{% set version = "5.0.4" %}
+{% set version = "5.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5d196c09c3948d2efff699692415327d9bce31755cc54ed88ec5652c78dc9804
+  sha256: d996c69d50081a24d6dca9679abf43ffd2be368b065f953c2c9082e5d649c734
 
 build:
   number: 0
@@ -49,4 +49,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - anjos
     - sodre
