@@ -1,0 +1,22 @@
+diff --git "a/tests/data/accentu\303\251.txt" "b/tests/data/accentu\303\251.txt"
+deleted file mode 100644
+index 9f4b6d8..0000000
+--- "a/tests/data/accentu\303\251.txt"
++++ /dev/null
+@@ -1 +0,0 @@
+-This is a test file
+diff --git a/tests/test_pymediainfo.py b/tests/test_pymediainfo.py
+index 8841bef..079f5b9 100644
+--- a/tests/test_pymediainfo.py
++++ b/tests/test_pymediainfo.py
+@@ -154,6 +154,10 @@ class MediaInfoUnicodeXMLTest(unittest.TestCase):
+         )
+ 
+ 
++@pytest.mark.skipif(
++    sys.platform.startswith("win"),
++    reason="Accented characters currently not supported by conda-package-handling under Windows platform until conda/conda-package-handling#57 is merged",
++)
+ class MediaInfoUnicodeFileNameTest(unittest.TestCase):
+     def setUp(self):
+         self.media_info = MediaInfo.parse(os.path.join(data_dir, "accentué.txt"))
