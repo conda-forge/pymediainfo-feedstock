@@ -6,10 +6,18 @@ index 9f4b6d8..0000000
 @@ -1 +0,0 @@
 -This is a test file
 diff --git a/tests/test_pymediainfo.py b/tests/test_pymediainfo.py
-index 8841bef..079f5b9 100644
+index 804b49c..e5e9224 100644
 --- a/tests/test_pymediainfo.py
 +++ b/tests/test_pymediainfo.py
-@@ -154,6 +154,10 @@ class MediaInfoUnicodeXMLTest(unittest.TestCase):
+@@ -3,6 +3,7 @@
+ 
+ import json
+ import os
++import sys
+ import pathlib
+ import pickle
+ import tempfile
+@@ -151,6 +152,10 @@ class MediaInfoUnicodeXMLTest(unittest.TestCase):
          )
  
  
