@@ -1,5 +1,5 @@
 {% set name = "pymediainfo" %}
-{% set version = "4.2.1" %}
+{% set version = "5.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 392d99d6bf74046ebaa2f7036d92d5327611d27532a384540e9310a62b8be26d
+  sha256: d996c69d50081a24d6dca9679abf43ffd2be368b065f953c2c9082e5d649c734
+  patches:
+    - fix-python-38-dll-load.patch  # [win and py==38]
+    - no-accented-filename-under-win.patch  # [win]
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . -vv"
-  skip: True  # [win]
-  
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
+
 requirements:
   host:
     - python
@@ -42,11 +44,12 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'A Python wrapper around the MediaInfo library'
+  summary: A Python wrapper around the MediaInfo library
 
   doc_url: https://pymediainfo.readthedocs.io/
   dev_url: https://github.com/sbraz/pymediainfo
 
 extra:
   recipe-maintainers:
+    - anjos
     - sodre
