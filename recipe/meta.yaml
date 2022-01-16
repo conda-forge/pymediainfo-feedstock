@@ -9,11 +9,11 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d996c69d50081a24d6dca9679abf43ffd2be368b065f953c2c9082e5d649c734
   patches:
-    - fix-python-38-dll-load.patch  # [win and py==38]
+    - fix-dll-load.patch
     - no-accented-filename-under-win.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:

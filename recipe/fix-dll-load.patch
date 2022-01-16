@@ -1,0 +1,12 @@
+diff --git a/pymediainfo/__init__.py b/pymediainfo/__init__.py
+index 9c18679..a2458c0 100644
+--- a/pymediainfo/__init__.py
++++ b/pymediainfo/__init__.py
+@@ -310,6 +310,7 @@ class MediaInfo:
+             library_paths = (library_file,)
+         exceptions = []
+         for library_path in library_paths:
++            library_path = os.path.abspath(library_path)
+             try:
+                 lib = lib_type(library_path)
+                 cls._define_library_prototypes(lib)
