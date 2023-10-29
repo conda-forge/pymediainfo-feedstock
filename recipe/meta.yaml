@@ -1,5 +1,5 @@
 {% set name = "pymediainfo" %}
-{% set version = "6.0.1" %}
+{% set version = "6.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 96e04bac0dfcb726bed70c314b1219121c4b9344c66a98f426ce27d7f9abffb0
+  sha256: 186a0b41a94524f0984d085ca6b945c79a254465b7097f2560dc0c04e8d1d8a5
   patches:
     - fix-python-38-dll-load.patch  # [win and py==38]
     - no-accented-filename-under-win.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
