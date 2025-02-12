@@ -1,5 +1,6 @@
 {% set name = "pymediainfo" %}
 {% set version = "7.0.0" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +10,6 @@ source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b78e979e42e50a714f439452679c53d9e99b6f35a25542837aee97886d06dd45
   patches:
-    - fix-python-38-dll-load.patch  # [win and py==38]
     - no-accented-filename-under-win.patch  # [win]
 
 build:
@@ -21,13 +21,11 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
-    - python
+    - python {{ python_min }}
+    - pdm-backend
     - pip
-    - setuptools
-    - setuptools_scm
   run:
-    - python
-    - setuptools
+    - python >={{ python_min }}
     - libmediainfo
 
 test:
@@ -38,7 +36,6 @@ test:
   requires:
     - pip
     - pytest
-    - pytest-runner
   commands:
     - pip check
     - pytest tests
