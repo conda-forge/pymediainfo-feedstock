@@ -1,6 +1,5 @@
 {% set name = "pymediainfo" %}
 {% set version = "7.0.0" %}
-{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
@@ -21,11 +20,11 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
-    - python {{ python_min }}
+    - python
     - pdm-backend
     - pip
   run:
-    - python >={{ python_min }}
+    - python
     - libmediainfo
 
 test:
