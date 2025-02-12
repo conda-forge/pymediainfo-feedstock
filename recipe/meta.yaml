@@ -1,19 +1,18 @@
 {% set name = "pymediainfo" %}
-{% set version = "6.1.0" %}
+{% set version = "7.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 186a0b41a94524f0984d085ca6b945c79a254465b7097f2560dc0c04e8d1d8a5
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b78e979e42e50a714f439452679c53d9e99b6f35a25542837aee97886d06dd45
   patches:
-    - fix-python-38-dll-load.patch  # [win and py==38]
     - no-accented-filename-under-win.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -22,11 +21,10 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
+    - pdm-backend
     - pip
-    - setuptools_scm
   run:
     - python
-    - setuptools
     - libmediainfo
 
 test:
@@ -37,7 +35,6 @@ test:
   requires:
     - pip
     - pytest
-    - pytest-runner
   commands:
     - pip check
     - pytest tests
