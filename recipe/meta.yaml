@@ -1,5 +1,5 @@
 {% set name = "pymediainfo" %}
-{% set version = "7.0.0" %}
+{% set version = "7.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b78e979e42e50a714f439452679c53d9e99b6f35a25542837aee97886d06dd45
+  sha256: 0d5df59ecc615e24c56f303b8f651579c6accab7265715e5d429186d7ba21514
   patches:
     - no-accented-filename-under-win.patch  # [win]
 
